@@ -12,7 +12,9 @@ jobs:
         run: docker build -t test-react .
       - name: stop container
         run: docker stop test-react
+        continue-on-error: true
       - name: remove image
         run: docker rm test-react
+        continue-on-error: true
       - name: run image
         run: docker run -d -p 3000:80 test-react --name reacto

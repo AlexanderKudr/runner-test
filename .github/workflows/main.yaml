@@ -15,4 +15,4 @@ jobs:
       - name: remove image
         run: docker rm test-react
       - name: run image
-        run: docker run -d -p 3000:80 test-react
+        run: docker run -d -p 3000:80 test-react --name reacto

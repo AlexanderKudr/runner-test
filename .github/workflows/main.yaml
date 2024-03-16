@@ -1,0 +1,14 @@
+name: main
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: build docker image
+        run: docker build -t alexdevops111/testo
+      - name: run image
+        run: docker run -d -p 3000:3000 alexdevops111/testo

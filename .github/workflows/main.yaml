@@ -17,4 +17,4 @@ jobs:
         run: docker rm test-react
         continue-on-error: true
       - name: run image
-        run: docker run -d -p 3000:80 test-react --name reacto
+        run: docker run -d --name reacto -p 3000:80 test-react

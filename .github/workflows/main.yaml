@@ -10,11 +10,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: build docker image
         run: docker build -t test-react .
+
       - name: stop container
-        run: docker stop test-react
+        run: docker stop reacto        
         continue-on-error: true
+
       - name: remove image
-        run: docker rm test-react
+        run: docker rmi test-react
         continue-on-error: true
-      - name: run image
+
+      - name: run container
         run: docker run -d --name reacto -p 3000:80 test-react

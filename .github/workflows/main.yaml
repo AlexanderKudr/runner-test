@@ -7,17 +7,21 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
-      - name: build docker image
-        run: docker build -t test-react .
-
       - name: stop container
         run: docker stop reacto        
+        continue-on-error: true
+
+      - name: remove container
+        run: docker rm reacto
         continue-on-error: true
 
       - name: remove image
         run: docker rmi test-react
         continue-on-error: true
+
+      - uses: actions/checkout@v2
+      - name: build docker image
+        run: docker build -t test-react .
 
       - name: run container
         run: docker run -d --name reacto -p 3000:80 test-react
